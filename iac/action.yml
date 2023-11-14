@@ -1,0 +1,32 @@
+name: "Vulnmap Infrastructure as Code"
+description: "Check your Infrastructure as Code fields for issues using Vulnmap"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  command:
+    description: "Which Vulnmap command to run, defaults to test"
+    default: test
+  args:
+    description: "Additional arguments to pass to Vulnmap"
+  file:
+    description: "File to test"
+  json:
+    description: "Output a vulnmap.json file with results if running the test command"
+    default: false
+  sarif:
+    description: "Output a vulnmap.sarif file with results if running the test command"
+    default: true
+runs:
+  using: "docker"
+  image: "docker://khulnasoft/vulnmap:alpine"
+  env:
+    VULNMAP_INTEGRATION_NAME: GITHUB_ACTIONS
+    VULNMAP_INTEGRATION_VERSION: iac
+  args:
+  - vulnmap
+  - iac
+  - ${{ inputs.command }}
+  - ${{ inputs.file }}
+  - ${{ inputs.args }}

@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: actions
+  annotations:
+    github.com/project-slug: khulnasoft-lab/vulnmap-actions
+    github.com/team-slug: vulnmap/hammerhead
+spec:
+  type: supply-chain-tooling
+  lifecycle: "-"
+  owner: hammerhead
