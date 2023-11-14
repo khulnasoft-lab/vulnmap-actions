@@ -59,7 +59,7 @@ jobs:
 
 Using `--sarif-file-output` [Vulnmap CLI flag][cli-ref] and the [official GitHub SARIF upload action](https://docs.github.com/en/code-security/secure-coding/uploading-a-sarif-file-to-github), you can upload Vulnmap scan results to the GitHub Code Scanning.
 
-![Vulnmap results as a SARIF output uploaded to GitHub Code Scanning](../_templates/sarif-example.png)
+
 
 The Vulnmap Action will fail when vulnerabilities are found. This would prevent the SARIF upload action from running, so we need to introduce a [continue-on-error](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error) option like this:
 
