@@ -114,11 +114,7 @@ Every Vulnmap account has this token. Once you [create an account](https://khuln
 
 All Vulnmap GitHub Actions support integration with GitHub Code Scanning to show vulnerability information in the GitHub Security tab. You can see full details on the individual action READMEs linked above.
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> e6c0c0be92fea558b09cef4a10bfb6e3d0ea8326
 ### Continuing on error
 
 The above examples will fail the workflow when issues are found. If you want to ensure the Action continues, even if Vulnmap finds vulnerabilities, then [continue-on-error](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepscontinue-on-error) can be used..
