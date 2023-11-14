@@ -1,0 +1,26 @@
+name: "Vulnmap Gradle (jdk17)"
+description: "Check your Gradle application for vulnerabilties using Vulnmap"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  command:
+    description: "Which Vulnmap command to run, defaults to test"
+    default: test
+  args:
+    description: "Additional arguments to pass to Vulnmap"
+  json:
+    description: "Output a vulnmap.json file with results if running the test command"
+    default: false
+runs:
+  using: "docker"
+  image: "docker://khulnasoft/vulnmap:gradle-jdk17"
+  env:
+    FORCE_COLOR: 2
+    VULNMAP_INTEGRATION_NAME: GITHUB_ACTIONS
+    VULNMAP_INTEGRATION_VERSION: gradle-jdk17
+  args:
+  - vulnmap
+  - ${{ inputs.command }}
+  - ${{ inputs.args }} 

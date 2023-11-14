@@ -1,0 +1,22 @@
+name: "Setup Vulnmap"
+description: "Installs a specific version of Vulnmap"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  vulnmap-version:
+    description: "Which Vulnmap version to install"
+    default: latest
+outputs:
+  version:
+    description: "The version of Vulnmap installed"
+    value: ${{ steps.version.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/setup_vulnmap.sh ${{ inputs.vulnmap-version }} ${{ runner.os }}
+      shell: bash
+    - id: version
+      shell: bash
+      run: echo "version=$(vulnmap version)" >> $GITHUB_OUTPUT

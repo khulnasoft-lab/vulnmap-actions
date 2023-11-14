@@ -1,0 +1,32 @@
+name: "Vulnmap Docker"
+description: "Check your Docker images for vulnerabilties using Vulnmap"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  command:
+    description: "Which Vulnmap command to run, defaults to test"
+    default: test
+  args:
+    description: "Additional arguments to pass to Vulnmap"
+  image:
+    description: "Image to test"
+  json:
+    description: "Output a vulnmap.json file with results if running the test command"
+    default: false
+  sarif:
+    description: "Output a vulnmap.sarif file with results if running the test command"
+    default: true
+runs:
+  using: "docker"
+  image: "docker://khulnasoft/vulnmap:docker"
+  env:
+    VULNMAP_INTEGRATION_NAME: GITHUB_ACTIONS
+    VULNMAP_INTEGRATION_VERSION: docker
+  args:
+  - vulnmap
+  - ${{ inputs.command }}
+  - ${{ inputs.args }}
+  - --docker
+  - ${{ inputs.image }}
